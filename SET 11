@@ -1,0 +1,85 @@
+1.  public class FinallyDemo2 {
+    public static void main(String[] args) {
+        try {
+            int data = 50 / 0;
+        } catch (ArithmeticException e) {
+            System.out.println("Caught Exception: " + e);
+        } finally {
+            System.out.println("Finally block executed");
+        }
+    }
+}
+
+
+
+Caught Exception: java.lang.ArithmeticException: / by zero
+Finally block executed
+
+
+2.   class Company {
+    int n;
+    boolean flag = false;
+
+    synchronized void produce(int n) {
+        if (flag) {
+            try { wait(); } catch (Exception e) {}
+        }
+        this.n = n;
+        System.out.println("Produced: " + n);
+        flag = true;
+        notify();
+    }
+
+    synchronized void consume() {
+        if (!flag) {
+            try { wait(); } catch (Exception e) {}
+        }
+        System.out.println("Consumed: " + n);
+        flag = false;
+        notify();
+    }
+}
+
+class Producer extends Thread {
+    Company c;
+    Producer(Company c) { this.c = c; }
+    public void run() {
+        int i = 1;
+        while (i <= 5) {
+            c.produce(i++);
+            try { Thread.sleep(500); } catch (Exception e) {}
+        }
+    }
+}
+
+class Consumer extends Thread {
+    Company c;
+    Consumer(Company c) { this.c = c; }
+    public void run() {
+        int i = 1;
+        while (i <= 5) {
+            c.consume();
+            try { Thread.sleep(500); } catch (Exception e) {}
+        }
+    }
+}
+
+public class ProducerConsumer {
+    public static void main(String[] args) {
+        Company comp = new Company();
+        new Producer(comp).start();
+        new Consumer(comp).start();
+    }
+}
+
+
+Produced: 1
+Consumed: 1
+Produced: 2
+Consumed: 2
+Produced: 3
+Consumed: 3
+Produced: 4
+Consumed: 4
+Produced: 5
+Consumed: 5
