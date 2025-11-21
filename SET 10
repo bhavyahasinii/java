@@ -1,0 +1,79 @@
+1.  class Animal {
+    void sound() {
+        System.out.println("Animal makes sound");
+    }
+}
+
+class Dog extends Animal {
+    void sound() {
+        System.out.println("Dog barks");
+    }
+}
+
+public class RuntimePoly {
+    public static void main(String[] args) {
+        Animal a = new Dog();
+        a.sound();
+    }
+}
+
+
+Dog barks
+
+2.  interface A {
+    void showA();
+}
+
+interface B {
+    void showB();
+}
+
+class C implements A, B {
+    public void showA() {
+        System.out.println("From interface A");
+    }
+    public void showB() {
+        System.out.println("From interface B");
+    }
+}
+
+public class MultipleInherit {
+    public static void main(String[] args) {
+        C obj = new C();
+        obj.showA();
+        obj.showB();
+    }
+}
+
+From interface A
+From interface B
+
+3.  class MyRunnable implements Runnable {
+    String msg;
+    int delay;
+    MyRunnable(String m, int d) { msg = m; delay = d; }
+
+    public void run() {
+        try {
+            while (true) {
+                System.out.println(msg);
+                Thread.sleep(delay);
+            }
+        } catch (InterruptedException e) { }
+    }
+}
+
+public class RunnableThreads {
+    public static void main(String[] args) {
+        new Thread(new MyRunnable("Good Morning", 1000)).start();
+        new Thread(new MyRunnable("Hello", 2000)).start();
+        new Thread(new MyRunnable("Welcome", 3000)).start();
+    }
+}
+
+
+Good Morning
+Hello
+Welcome
+Good Morning
+...
