@@ -1,0 +1,70 @@
+1.  public class SelectionSort {
+    public static void main(String[] args) {
+        int[] arr = {64, 25, 12, 22, 11};
+
+        for (int i = 0; i < arr.length - 1; i++) {
+            int min = i;
+            for (int j = i + 1; j < arr.length; j++)
+                if (arr[j] < arr[min])
+                    min = j;
+
+            int temp = arr[min];
+            arr[min] = arr[i];
+            arr[i] = temp;
+        }
+
+        System.out.println("Sorted array:");
+        for (int num : arr)
+            System.out.print(num + " ");
+    }
+}
+
+Sorted array:
+11 12 22 25 64
+
+2. public class StringDemo {
+    public static void main(String[] args) {
+        String s1 = "Hello";
+        String s2 = "World";
+        String s3 = s1 + " " + s2;
+
+        System.out.println("Length: " + s3.length());
+        System.out.println("Uppercase: " + s3.toUpperCase());
+        System.out.println("Substring: " + s3.substring(0, 5));
+    }
+}
+
+Length: 11
+Uppercase: HELLO WORLD
+Substring: Hello
+
+3.  class A {
+    void showA() {
+        System.out.println("Class A");
+    }
+}
+
+class B extends A {
+    void showB() {
+        System.out.println("Class B");
+    }
+}
+
+class C extends B {
+    void showC() {
+        System.out.println("Class C");
+    }
+}
+
+public class MultiLevel {
+    public static void main(String[] args) {
+        C obj = new C();
+        obj.showA();
+        obj.showB();
+        obj.showC();
+    }
+}
+
+Class A
+Class B
+Class C
