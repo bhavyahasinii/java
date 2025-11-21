@@ -1,0 +1,77 @@
+1.   public class InsertionSort {
+    public static void main(String[] args) {
+        int[] arr = {5, 2, 9, 1, 5, 6};
+
+        for (int i = 1; i < arr.length; i++) {
+            int key = arr[i];
+            int j = i - 1;
+
+            while (j >= 0 && arr[j] > key) {
+                arr[j + 1] = arr[j];
+                j--;
+            }
+            arr[j + 1] = key;
+        }
+
+        System.out.println("Sorted array:");
+        for (int num : arr)
+            System.out.print(num + " ");
+    }
+}
+
+Sorted array:
+1 2 5 5 6 9
+
+2.  class Parent {
+    void displayParent() {
+        System.out.println("This is the Parent class");
+    }
+}
+
+class Child1 extends Parent {
+    void displayChild1() {
+        System.out.println("This is Child1 class");
+    }
+}
+
+class Child2 extends Parent {
+    void displayChild2() {
+        System.out.println("This is Child2 class");
+    }
+}
+
+public class Hierarchical {
+    public static void main(String[] args) {
+        Child1 c1 = new Child1();
+        Child2 c2 = new Child2();
+        c1.displayParent();
+        c1.displayChild1();
+        c2.displayParent();
+        c2.displayChild2();
+    }
+}
+
+This is the Parent class
+This is Child1 class
+This is the Parent class
+This is Child2 class
+
+3.   public class MultipleCatch {
+    public static void main(String[] args) {
+        try {
+            int a = 10 / 0;
+            int arr[] = new int[5];
+            arr[6] = 100;
+        } catch (ArithmeticException e) {
+            System.out.println("Arithmetic Exception caught");
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Array Index Out Of Bounds Exception caught");
+        } catch (Exception e) {
+            System.out.println("General Exception caught");
+        }
+        System.out.println("Program continues...");
+    }
+}
+
+Arithmetic Exception caught
+Program continues...
