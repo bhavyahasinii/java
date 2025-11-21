@@ -1,0 +1,63 @@
+1.  class Animal {
+    String color = "white";
+}
+
+class Dog extends Animal {
+    String color = "black";
+    void display() {
+        System.out.println("Dog color: " + color);
+        System.out.println("Animal color: " + super.color);
+    }
+}
+
+public class SuperExample {
+    public static void main(String[] args) {
+        Dog d = new Dog();
+        d.display();
+    }
+}
+
+Dog color: black
+Animal color: white
+
+2.  interface Vehicle {
+    void start();
+}
+
+class Car implements Vehicle {
+    public void start() {
+        System.out.println("Car started...");
+    }
+}
+
+public class InterfaceDemo {
+    public static void main(String[] args) {
+        Vehicle v = new Car();
+        v.start();
+    }
+}
+
+Car started...
+
+3.  public class FinallyDemo {
+    public static void main(String[] args) {
+        try {
+            int a = 10 / 0;
+        } catch (ArithmeticException e) {
+            System.out.println("Exception caught");
+        } finally {
+            System.out.println("Finally block always executes");
+        }
+
+        try {
+            System.out.println("No Exception here");
+        } finally {
+            System.out.println("Finally executes even without catch");
+        }
+    }
+}
+
+Exception caught
+Finally block always executes
+No Exception here
+Finally executes even without catch
