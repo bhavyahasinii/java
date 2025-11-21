@@ -1,0 +1,81 @@
+1.  class DefaultValues {
+    byte b;
+    short s;
+    int i;
+    long l;
+    float f;
+    double d;
+    char c;
+    boolean bl;
+
+    void display() {
+        System.out.println("byte: " + b);
+        System.out.println("short: " + s);
+        System.out.println("int: " + i);
+        System.out.println("long: " + l);
+        System.out.println("float: " + f);
+        System.out.println("double: " + d);
+        System.out.println("char: " + c);
+        System.out.println("boolean: " + bl);
+    }
+
+    public static void main(String[] args) {
+        new DefaultValues().display();
+    }
+}
+
+byte: 0
+short: 0
+int: 0
+long: 0
+float: 0.0
+double: 0.0
+char: 
+boolean: false
+
+2.  class OverloadExample {
+    void add(int a, int b) {
+        System.out.println("Sum = " + (a + b));
+    }
+
+    void add(double a, double b) {
+        System.out.println("Sum = " + (a + b));
+    }
+
+    public static void main(String[] args) {
+        OverloadExample obj = new OverloadExample();
+        obj.add(10, 20);
+        obj.add(5.5, 6.7);
+    }
+}
+
+Sum = 30
+Sum = 12.2
+
+3.  class MyThread extends Thread {
+    public void run() {
+        System.out.println(Thread.currentThread().getName() + " is running");
+    }
+}
+
+public class ThreadDemo {
+    public static void main(String[] args) throws InterruptedException {
+        MyThread t1 = new MyThread();
+        MyThread t2 = new MyThread();
+
+        t1.start();
+        t2.start();
+
+        System.out.println("t1 is alive: " + t1.isAlive());
+
+        t1.join();
+        t2.join();
+
+        System.out.println("Both threads finished execution");
+    }
+}
+
+Thread-0 is running
+Thread-1 is running
+t1 is alive: true
+Both threads finished execution
