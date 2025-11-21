@@ -1,0 +1,91 @@
+1. import java.util.Scanner;
+
+public class SumOfArray {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter size of array: ");
+        int n = sc.nextInt();
+
+        int arr[] = new int[n];
+        int sum = 0;
+
+        System.out.println("Enter " + n + " elements:");
+        for (int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+            sum += arr[i];
+        }
+
+        System.out.println("Sum of elements = " + sum);
+    }
+}
+
+Enter size of array: 5
+Enter 5 elements:
+10 20 30 40 50
+Sum of elements = 150
+
+2.  class Parent {
+    void displayParent() {
+        System.out.println("This is the Parent class");
+    }
+}
+
+class Child extends Parent {
+    void displayChild() {
+        System.out.println("This is the Child class");
+    }
+}
+
+public class SingleInheritance {
+    public static void main(String[] args) {
+        Child c = new Child();
+        c.displayParent();
+        c.displayChild();
+    }
+}
+
+This is the Parent class
+This is the Child class
+
+3.  class MyThread extends Thread {
+    String message;
+    int delay;
+
+    MyThread(String msg, int d) {
+        message = msg;
+        delay = d;
+    }
+
+    public void run() {
+        try {
+            while (true) {
+                System.out.println(message);
+                Thread.sleep(delay);
+            }
+        } catch (InterruptedException e) {
+            System.out.println(e);
+        }
+    }
+}
+
+public class ThreadExample {
+    public static void main(String[] args) {
+        MyThread t1 = new MyThread("Good Morning", 1000);
+        MyThread t2 = new MyThread("Hello", 2000);
+        MyThread t3 = new MyThread("Welcome", 3000);
+
+        t1.start();
+        t2.start();
+        t3.start();
+    }
+}
+
+Good Morning
+Hello
+Welcome
+Good Morning
+Good Morning
+Hello
+Good Morning
+Welcome
+...
