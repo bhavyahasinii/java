@@ -1,0 +1,75 @@
+1.  import java.util.Scanner;
+
+public class BinarySearch {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int[] arr = {10, 20, 30, 40, 50};
+        System.out.print("Enter element to search: ");
+        int key = sc.nextInt();
+        int low = 0, high = arr.length - 1, mid;
+        boolean found = false;
+
+        while (low <= high) {
+            mid = (low + high) / 2;
+            if (arr[mid] == key) {
+                found = true;
+                break;
+            } else if (arr[mid] < key)
+                low = mid + 1;
+            else
+                high = mid - 1;
+        }
+
+        if (found)
+            System.out.println("Element found!");
+        else
+            System.out.println("Element not found!");
+    }
+}
+
+
+Enter element to search: 30
+Element found!
+
+2.  class Person {
+    String name;
+    Person(String n) {
+        name = n;
+    }
+
+    void show() {
+        System.out.println("Name: " + name);
+    }
+}
+
+public class ConstructorExample {
+    public static void main(String[] args) {
+        Person p = new Person("Bhavya");
+        p.show();
+    }
+}
+
+Name: Bhavya
+
+3.  class AgeException extends Exception {
+    AgeException(String msg) {
+        super(msg);
+    }
+}
+
+public class CustomExceptionDemo {
+    public static void main(String[] args) {
+        int age = 15;
+        try {
+            if (age < 18)
+                throw new AgeException("Not eligible to vote");
+            else
+                System.out.println("Eligible to vote");
+        } catch (AgeException e) {
+            System.out.println("Caught Exception: " + e.getMessage());
+        }
+    }
+}
+
+
+Caught Exception: Not eligible to vote
